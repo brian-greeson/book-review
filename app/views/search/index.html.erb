@@ -1,0 +1,12 @@
+<section class="book_info">
+  <p class="book_title">><%= @searchresults.book.title %></p>
+  <p class="book_author"><%= @searchresults.book.author %></p>
+  <p class="book_publisher"><%= @searchresults.book.publisher %></p>
+</section>
+<section class="reviews">
+  <p class="review_count">Reviews: <%= @searchresults.reviews.count %></p>
+  <% @searchresults.reviews.each do |review| %>
+    <p class="review"><%= review.summary %></p>
+    <p class="review_date"><%= review.date %></p>
+  <% end %>
+</section>
