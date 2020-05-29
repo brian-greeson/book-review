@@ -1,6 +1,10 @@
-class NytBookService
+class NytBookService < BaseService
+  def initialize
+    @endpoint = "https://api.nytimes.com/svc/books/v3"
+  end
+
   def search_by_title(title)
-    json = get_json("reviews.json", {"title": title})
+    get_json("reviews.json", {"title": title})
   end
 
   private
@@ -10,9 +14,8 @@ class NytBookService
   end
 
   def conn
-    Faraday.new(url: "https://api.nytimes.com/svc/books/v3") do |f|
+    Faraday.new(url: @endpoint) do |f|
       f.params["api-key"] = ENV["API_KEY"]
     end
   end
-
 end
